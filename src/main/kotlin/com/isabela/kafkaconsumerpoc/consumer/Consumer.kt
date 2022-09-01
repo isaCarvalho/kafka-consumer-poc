@@ -10,7 +10,7 @@ import org.springframework.kafka.support.Acknowledgment
 class Consumer {
     private val logger = LoggerFactory.getLogger(javaClass)
 
-    @KafkaListener(topics = ["\${kafka.topics.product}"], groupId = "ppr")
+    @KafkaListener(topics = ["\${kafka.topics.task}"], groupId = "ppr")
     fun listenGroupFoo(task: Task, ack: Acknowledgment) {
         logger.info("Message received {}", task)
         ack.acknowledge()
