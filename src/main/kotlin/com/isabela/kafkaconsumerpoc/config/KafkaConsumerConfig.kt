@@ -1,6 +1,6 @@
 package com.isabela.kafkaconsumerpoc.config
 
-import com.isabela.kafkaconsumerpoc.serializer.TaskDeserializer
+import com.isabela.kafkaconsumerpoc.deserializer.TaskDeserializer
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.springframework.beans.factory.annotation.Value
