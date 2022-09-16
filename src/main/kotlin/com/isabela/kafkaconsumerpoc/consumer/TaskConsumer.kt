@@ -2,6 +2,7 @@ package com.isabela.kafkaconsumerpoc.consumer
 
 import com.isabela.kafkaconsumerpoc.model.Task
 import com.isabela.kafkaconsumerpoc.proto.TaskPBOuterClass.TaskPB
+import com.isabela.kafkaconsumerpoc.service.TaskService
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener
 import org.springframework.stereotype.Component
@@ -10,7 +11,9 @@ import java.sql.Date
 import java.time.Instant
 
 @Component
-class Consumer {
+class TaskConsumer(
+    private val service: TaskService
+) {
     private val logger = LoggerFactory.getLogger(javaClass)
 
     @KafkaListener(topics = ["\${kafka.topics.task}"], groupId = "ppr")
@@ -26,6 +29,8 @@ class Consumer {
             Date.from(endDateInstant),
             taskPB.done
         )
+
+        service.save(task)
 
         logger.info("Task model {}", task)
         ack.acknowledge()

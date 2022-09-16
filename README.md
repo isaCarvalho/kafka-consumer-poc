@@ -9,7 +9,7 @@
 
 ```
 curl --request POST \
-   --url http://localhost:8080/product \
+   --url http://localhost:8080/tasks \
    --header 'Content-Type: application/json' \
    --data '{
    "name": "Tarefa 1",
